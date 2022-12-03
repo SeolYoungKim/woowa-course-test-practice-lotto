@@ -30,7 +30,7 @@ public class InputView {
     }
 
     private void validateThisIsNumber(String input) {
-        final String REGEX_FOR_NUMBER = "^\\d$";
+        final String REGEX_FOR_NUMBER = "^\\d+$";
         if (!input.matches(REGEX_FOR_NUMBER)) {
             throw new IllegalArgumentException("숫자만 입력해 주세요.");
         }
