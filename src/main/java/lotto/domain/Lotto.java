@@ -6,6 +6,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Lotto {
+
     static final int MIN_NUMBER_OF_LOTTO = 1;
     static final int MAX_NUMBER_OF_LOTTO = 45;
     static final int SIZE_OF_LOTTO_NUMBERS = 6;

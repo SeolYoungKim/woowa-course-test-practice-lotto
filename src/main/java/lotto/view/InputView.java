@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.dto.WinningNumbersDto;
 
 public class InputView {
+
     public int money() {
         System.out.println("구입금액을 입력해 주세요.");
         String inputValue = Console.readLine();

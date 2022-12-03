@@ -4,6 +4,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class LottoStore {
+
     public static final int LOTTO_PRICE = 1_000;
 
     private final LottoNumberGenerator lottoNumberGenerator;

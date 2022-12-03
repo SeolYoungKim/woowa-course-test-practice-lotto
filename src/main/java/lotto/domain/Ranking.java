@@ -6,6 +6,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public enum Ranking {
+
     FIFTH(3, false, 5_000),
     FORTH(4, false, 50_000),
     THIRD(5, false, 1_500_000),
@@ -51,10 +52,6 @@ public enum Ranking {
 
     public int matchCount() {
         return matchCount;
-    }
-
-    public boolean isMatchBonusNumber() {
-        return isMatchBonusNumber;
     }
 
     public int winnings() {
