@@ -10,6 +10,12 @@ public class LottoResults {
         this.results = results;
     }
 
+    public long totalWinnings() {
+        return results.entrySet().stream()
+                .mapToLong(entry -> entry.getKey().winnings(entry.getValue()))
+                .sum();
+    }
+
     public Map<Ranking, Integer> results() {
         return Map.copyOf(results);
     }

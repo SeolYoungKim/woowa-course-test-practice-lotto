@@ -40,4 +40,8 @@ public enum Ranking {
         this.isMatchBonusNumber = isMatchBonusNumber;
         this.winnings = winnings;
     }
+
+    public long winnings(int count) {
+        return (long) this.winnings * count;
+    }
 }

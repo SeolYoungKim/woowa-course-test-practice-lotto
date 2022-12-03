@@ -49,4 +49,8 @@ public class LottoTickets {
         rankingsForResult
                 .forEach(ranking -> result.put(ranking, result.get(ranking) + 1));
     }
+
+    public int numberOfLottoTickets() {
+        return lottoTickets.size();
+    }
 }
