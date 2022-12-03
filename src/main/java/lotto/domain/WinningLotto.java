@@ -1,14 +1,14 @@
 package lotto.domain;
 
-import java.util.List;
+import lotto.dto.WinningNumbersDto;
 
 public class WinningLotto {
 
-    private final List<Integer> winningNumbers;
+    private final Lotto winningNumbers;
     private final BonusNumber bonusNumber;
 
-    public WinningLotto(List<Integer> winningNumbers, BonusNumber bonusNumber) {
-        this.winningNumbers = winningNumbers;
+    public WinningLotto(WinningNumbersDto dto, BonusNumber bonusNumber) {
+        this.winningNumbers = new Lotto(dto.winningNumbers());
         this.bonusNumber = bonusNumber;
     }
 }
