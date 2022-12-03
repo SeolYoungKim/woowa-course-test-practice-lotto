@@ -19,14 +19,14 @@ public enum Ranking {
                     Function.identity()));
 
     public static Ranking ranking(int count, boolean hasBonusNumber) {
-        if (isSecond(count, hasBonusNumber)) {
+        if (isSecondCondition(count, hasBonusNumber)) {
             return SECOND;
         }
 
         return MATCH_COUNTS_AND_RANKINGS.get(count);
     }
 
-    private static boolean isSecond(int count, boolean hasBonusNumber) {
+    private static boolean isSecondCondition(int count, boolean hasBonusNumber) {
         final int MATCH_COUNT_OF_THIRD_OF_SECOND = 5;
         return count == MATCH_COUNT_OF_THIRD_OF_SECOND && hasBonusNumber;
     }
@@ -41,7 +41,23 @@ public enum Ranking {
         this.winnings = winnings;
     }
 
-    public long winnings(int count) {
+    public long totalWinnings(int count) {
         return (long) this.winnings * count;
+    }
+
+    public boolean isSecond() {
+        return this == SECOND;
+    }
+
+    public int matchCount() {
+        return matchCount;
+    }
+
+    public boolean isMatchBonusNumber() {
+        return isMatchBonusNumber;
+    }
+
+    public int winnings() {
+        return winnings;
     }
 }

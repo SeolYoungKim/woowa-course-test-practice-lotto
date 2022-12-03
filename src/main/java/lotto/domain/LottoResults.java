@@ -12,7 +12,7 @@ public class LottoResults {
 
     public long totalWinnings() {
         return results.entrySet().stream()
-                .mapToLong(entry -> entry.getKey().winnings(entry.getValue()))
+                .mapToLong(entry -> entry.getKey().totalWinnings(entry.getValue()))
                 .sum();
     }
 

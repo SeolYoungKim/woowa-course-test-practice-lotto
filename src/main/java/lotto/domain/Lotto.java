@@ -3,6 +3,7 @@ package lotto.domain;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Lotto {
     static final int MIN_NUMBER_OF_LOTTO = 1;
@@ -13,7 +14,13 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        this.numbers = sortedList(numbers);
+    }
+
+    private List<Integer> sortedList(List<Integer> numbers) {
+        return numbers.stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     public boolean contains(BonusNumber bonusNumber) {
@@ -57,5 +64,10 @@ public class Lotto {
         if (setOfNumbers.size() != numbers.size()) {
             throw new IllegalArgumentException("중복된 숫자는 입력할 수 없습니다.");
         }
+    }
+
+    @Override
+    public String toString() {
+        return numbers.toString();
     }
 }

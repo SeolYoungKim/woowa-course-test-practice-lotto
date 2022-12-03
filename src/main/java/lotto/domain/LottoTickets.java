@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -52,5 +53,9 @@ public class LottoTickets {
 
     public int numberOfLottoTickets() {
         return lottoTickets.size();
+    }
+
+    public List<Lotto> lottoTickets() {
+        return Collections.unmodifiableList(lottoTickets);
     }
 }
