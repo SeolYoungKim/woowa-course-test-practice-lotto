@@ -14,9 +14,8 @@ public class LottoStore {
 
     public LottoTickets lottoTickets(int money) {
         validateMoney(money);
-
-        // 입력받은 금액에 맞는 개수만큼 로또를 발행
         int numberOfLotto = money / LOTTO_PRICE;
+
         return new LottoTickets(
                 IntStream.rangeClosed(1, numberOfLotto)
                         .mapToObj(i -> new Lotto(lottoNumberGenerator.lottoNumbers()))
@@ -29,14 +28,22 @@ public class LottoStore {
     }
 
     private void validateZero(int money) {
-        if (money == 0) {
+        if (isZero(money)) {
             throw new IllegalArgumentException("0원은 입력할 수 없습니다.");
         }
     }
 
+    private boolean isZero(int money) {
+        return money == 0;
+    }
+
     private void validate1000Units(int money) {
-        if (money % LOTTO_PRICE != 0) {
+        if (isNot1000Units(money)) {
             throw new IllegalArgumentException("로또 금액은 1,000원 단위로 입력되어야 합니다.");
         }
+    }
+
+    private boolean isNot1000Units(int money) {
+        return money % LOTTO_PRICE != 0;
     }
 }
