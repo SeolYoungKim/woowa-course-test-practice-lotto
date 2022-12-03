@@ -18,12 +18,17 @@ public enum Ranking {
                     ranking -> ranking.matchCount,
                     Function.identity()));
 
-    public static Ranking of(int matchCount) {
-        if (MATCH_COUNTS_AND_RANKINGS.containsKey(matchCount)) {
-            return MATCH_COUNTS_AND_RANKINGS.get(matchCount);
+    public static Ranking ranking(int count, boolean hasBonusNumber) {
+        if (isSecond(count, hasBonusNumber)) {
+            return SECOND;
         }
 
-        throw new IllegalArgumentException("순위에 없습니다.");
+        return MATCH_COUNTS_AND_RANKINGS.get(count);
+    }
+
+    private static boolean isSecond(int count, boolean hasBonusNumber) {
+        final int MATCH_COUNT_OF_THIRD_OF_SECOND = 5;
+        return count == MATCH_COUNT_OF_THIRD_OF_SECOND && hasBonusNumber;
     }
 
     private final int matchCount;
