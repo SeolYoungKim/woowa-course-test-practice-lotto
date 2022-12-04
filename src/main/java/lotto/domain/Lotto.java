@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -67,8 +68,7 @@ public class Lotto {
         }
     }
 
-    @Override
-    public String toString() {
-        return numbers.toString();
+    public List<Integer> numbers() {
+        return Collections.unmodifiableList(numbers);
     }
 }

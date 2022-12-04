@@ -1,6 +1,7 @@
 package lotto.view;
 
-import java.text.NumberFormat;
+import static java.lang.String.format;
+
 import java.util.Map;
 import java.util.StringJoiner;
 import java.util.stream.Collectors;
@@ -13,10 +14,10 @@ public class OutputFormatter {
 
     String lottoTicketsFormat(LottoTickets lottoTickets) {
         StringJoiner stringJoiner = new StringJoiner("\n");
-        stringJoiner.add(lottoTickets.numberOfLottoTickets() + "개를 구매했습니다.");
+        stringJoiner.add(format("%d개를 구매했습니다.", lottoTickets.numberOfLottoTickets()));
 
         lottoTickets.lottoTickets()
-                .forEach(lotto -> stringJoiner.add(lotto.toString()));
+                .forEach(lotto -> stringJoiner.add(lotto.numbers().toString()));
 
         return stringJoiner.toString();
     }
@@ -24,29 +25,23 @@ public class OutputFormatter {
     String resultsFormat(LottoResults lottoResults) {
         Map<Ranking, Integer> results = lottoResults.results();
         return results.entrySet().stream()
-                .map(entry -> rankingFormat(entry.getKey()) + countFormat(entry.getValue()))
+                .map(entry -> resultFormat(entry.getKey(), entry.getValue()))
                 .collect(Collectors.joining("\n"));
     }
 
-    private String rankingFormat(Ranking ranking) {
+    private String resultFormat(Ranking ranking, Integer count) {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(ranking.matchCount()).append("개 일치");
+        stringBuilder.append(format("%d개 일치", ranking.matchCount()));
 
         if (ranking.isSecond()) {
             stringBuilder.append(", 보너스 볼 일치");
         }
 
-        String formatForNumber = NumberFormat.getInstance().format(ranking.winnings());
-        stringBuilder.append(" (").append(formatForNumber).append("원)");
-
+        stringBuilder.append(format(" (%,d원) - %d개", ranking.winnings(), count));
         return stringBuilder.toString();
     }
 
-    private String countFormat(Integer counts) {
-        return " - " + counts + "개";
-    }
-
     String rateOfReturnFormat(WinningStatistics winningStatistics) {
-        return String.format("총 수익률은 %.1f%%입니다.", winningStatistics.rateOfReturn());
+        return format("총 수익률은 %.1f%%입니다.", winningStatistics.rateOfReturn());
     }
 }

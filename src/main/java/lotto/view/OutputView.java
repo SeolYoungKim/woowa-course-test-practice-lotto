@@ -19,7 +19,7 @@ public class OutputView {
     public void printResults(LottoResults lottoResults, WinningStatistics statistics) {
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.println(formatter.resultsFormat(lottoResults));
-        System.out.println(formatter.rateOfReturnFormat(statistics));
+        System.out.println(formatter.resultsFormat(lottoResults));  // 결과
+        System.out.println(formatter.rateOfReturnFormat(statistics));  // 수익률
     }
 }
